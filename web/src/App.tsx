@@ -4,7 +4,7 @@ import { store } from './store';
 import { LoginForm } from './components/LoginForm/LoginForm';
 import { RegisterForm } from './components/RegisterForm/RegisterForm';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import Dashboard from './pages/Dashboard';
+import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Navbar } from './components/Navbar/Navbar';
 
 function App() {
