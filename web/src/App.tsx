@@ -6,6 +6,7 @@ import { RegisterForm } from './components/RegisterForm/RegisterForm';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Navbar } from './components/Navbar/Navbar';
+import { AddPlantForm } from './components/AddPlantForm/AddPlantForm';
 
 function App() {
     return (
@@ -22,6 +23,14 @@ function App() {
                                 element={
                                     <ProtectedRoute>
                                         <Dashboard />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path='/plants/add'
+                                element={
+                                    <ProtectedRoute>
+                                        <AddPlantForm />
                                     </ProtectedRoute>
                                 }
                             />

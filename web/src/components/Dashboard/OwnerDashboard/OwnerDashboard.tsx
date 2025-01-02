@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Grid, Card, Typography, Button } from '@mui/material';
 import { Add as AddIcon, LocalFlorist, Assignment, Star } from '@mui/icons-material';
+import { AddPlantForm } from '../../AddPlantForm/AddPlantForm';
 import './OwnerDashboard.css';
 
 export const OwnerDashboard = () => {
+    const [openAddPlant, setOpenAddPlant] = useState(false);
     const navigate = useNavigate();
 
     const stats = [
@@ -49,7 +51,7 @@ export const OwnerDashboard = () => {
                     variant="contained"
                     startIcon={<AddIcon />}
                     className="add-button"
-                    onClick={() => navigate('/plants/add')}
+                    onClick={() => setOpenAddPlant(true)}
                 >
                     Add New Plant
                 </Button>
@@ -120,6 +122,11 @@ export const OwnerDashboard = () => {
                     </Grid>
                 </Grid>
             </Box>
+
+            <AddPlantForm
+                open={openAddPlant}
+                onClose={() => setOpenAddPlant(false)}
+            />
         </div>
     );
 };

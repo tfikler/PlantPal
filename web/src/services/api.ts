@@ -40,3 +40,11 @@ export const authAPI = {
         return response.data;
     },
 };
+
+// api.ts
+export const plantAPI = {
+    addPlant: async (name: string, species: string, location: string) => {
+        const response = await api.post('/plants', { name, species, location });
+        return response.data;
+    },
+};

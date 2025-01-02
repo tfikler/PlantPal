@@ -1,0 +1,54 @@
+.add-plant-dialog {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.dialog-title {
+    background-color: #059669;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    font-weight: 600;
+}
+
+.dialog-icon {
+    margin-right: 8px;
+}
+
+.dialog-content {
+    padding: 24px;
+}
+
+.form-input {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.form-select {
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.dialog-actions {
+    padding: 8px 24px 16px;
+    justify-content: flex-end;
+}
+
+.cancel-button {
+    color: #6b7280;
+}
+
+.add-button {
+    background-color: #059669;
+    color: #fff;
+}
+
+.add-button:hover {
+    background-color: #047857;
+}

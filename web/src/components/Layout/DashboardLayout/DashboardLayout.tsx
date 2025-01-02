@@ -22,6 +22,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
     const menuItems = [
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
+        { text: 'Help needed feed', icon: <RequestsIcon />, path: '/help-needed-feed' },
         { text: 'My Plants', icon: <PlantIcon />, path: '/plants' },
         { text: 'Requests', icon: <RequestsIcon />, path: '/requests' },
         ...(user?.user_type === 'owner'

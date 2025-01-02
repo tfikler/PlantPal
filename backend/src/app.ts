@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { authRouter } from './routes/auth';
+import { plantRouter } from './routes/plants';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/auth', authRouter);
+app.use('/api/plants', plantRouter);
 
 // Health check route
 app.get('/health', (req, res) => {
