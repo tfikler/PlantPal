@@ -47,4 +47,21 @@ export const plantAPI = {
         const response = await api.post('/plants', { name, species, location });
         return response.data;
     },
+    getFeed: async () => {
+        const response = await api.get('/plants/feed');
+        console.log('api response', response);
+        return response.data;
+    },
+    createHelpPost: async (formData: FormData) => {
+        const response = await api.post('/plants/help', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        return response.data;
+    },
+    offerHelp: async (plantId: number) => {
+        const response = await api.post(`/plants/${plantId}/help-offers`);
+        return response.data;
+    }
 };

@@ -1,12 +1,20 @@
 import { pool } from '../config/database';
 
 export interface Plant {
-    id: string;
-    owner_id: string;
+    id: number;
+    owner_id: number;
     name: string;
     species: string;
+    location: string;
+    help_type?: 'need_advice' | 'need_babysitting' | 'need_in_person';
+    description?: string;
     image_url?: string;
-    health_status?: string;
+    created_at: Date;
+    user?: {
+        id: number;
+        full_name: string;
+        user_type: string;
+    };
 }
 
 export interface PlantInput {
@@ -75,5 +83,38 @@ export class PlantModel {
         );
         if (!result.rowCount) return false;
         return result.rowCount > 0;
+    }
+
+    static async getFeed(): Promise<Plant[]> {
+        const query = `
+        SELECT p.*, u.id as user_id, u.full_name, u.user_type
+        FROM plants p
+        JOIN users u ON p.owner_id = u.id
+        ORDER BY p.created_at DESC
+    `;
+        const result = await pool.query(query);
+        return result.rows;
+    }
+
+    static async createHelpPost(data: {
+        owner_id: number;
+        name: string;
+        description: string;
+        help_type: string;
+        image_url?: string;
+    }): Promise<Plant> {
+        const query = `
+            INSERT INTO plants (owner_id, name, description, help_type, image_url)
+            VALUES ($1, $2, $3, $4, $5)
+            RETURNING *
+        `;
+        const result = await pool.query(query, [
+            data.owner_id,
+            data.name,
+            data.description,
+            data.help_type,
+            data.image_url
+        ]);
+        return result.rows[0];
     }
 }

@@ -24,7 +24,7 @@ export const LoginForm = () => {
         try {
             const data = await authAPI.login(email, password);
             dispatch(loginSuccess(data));
-            navigate('/dashboard');
+            navigate('/');
         } catch (error: any) {
             const errorMessage = error.response?.data?.error || 'Login failed';
             setError(errorMessage);

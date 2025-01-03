@@ -7,10 +7,13 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Navbar } from './components/Navbar/Navbar';
 import { AddPlantForm } from './components/AddPlantForm/AddPlantForm';
+import {PlantFeedContainer} from "./components/PlantFeed/PlantFeedContainer/PlantFeedContainer";
+import { Toaster } from 'react-hot-toast';
 
 function App() {
     return (
         <Provider store={store}>
+            <Toaster position={'top-right'} />
             <Router>
                 <div className="min-h-screen bg-gray-50">
                     <Navbar />
@@ -34,7 +37,15 @@ function App() {
                                     </ProtectedRoute>
                                 }
                             />
-                            <Route path="/" element={<Navigate to="/dashboard" />} />
+                            <Route
+                                path="/"
+                                element={
+                                    <ProtectedRoute>
+                                        <PlantFeedContainer />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            {/*<Route path="/" element={<Navigate to="/dashboard" />} />*/}
                         </Routes>
                     </div>
                 </div>
